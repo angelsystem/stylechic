@@ -13,3 +13,45 @@
  *= require_tree .
  *= require_self
  */
+
+@import "materialize/components/color";
+$primary-color: color("red", "lighten-1") !default;
+@import "materialize";
+
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.container {
+  width: 95%;
+}
+
+.image-size {
+  width: 38px;
+  height: 38px;
+}
+
+.mask {
+  z-index: 99;
+}
+
+.card .card-image .card-title{
+  background: rgba(29, 28, 28, 0.38);
+  color: white;
+}
+
+#intro {
+  text-align: center;
+}
+
+nav .brand-logo {
+  margin-top: 10px;
+}
+

@@ -1,0 +1,41 @@
+<div class="clearfix">
+  <div class="post_image_description">
+    <%= image_tag @shot.image.url(:medium) %>
+    <div class="description">
+      <%= simple_format(@shot.description) %>
+    </div>
+  </div>
+  <div class="post_data">
+    <%= link_to "Visit Link", @shot.link, class: "button" %>
+    <%= link_to like_shot_path(@shot), method: :get, class: "data" do %>
+      <i class="fa fa-thumbs-o-up"></i>
+      <%= pluralize(@shot.get_upvotes.size, "Like") %>
+    <% end %>
+    <p class="data">
+      <i class="fa fa-comments-o"></i>
+      <%= pluralize(@shot.comments.count, "Comment") %>
+    </p>
+    <% if @shot.user == current_user %>
+      <%= link_to "Edit", edit_shot_path(@shot), class: "data" %>
+      <%= link_to "Delete", shot_path(@shot), method: :delete, data: { confirm: "Are you sure?" }, class: "data" %>
+    <% end %>
+  </div>
+</div>
+
+
+<div id="comments">
+  <h2 class="comment_count">
+    <%= pluralize(@shot.comments.count, "Comment") %>
+  </h2>
+  <% @comments.each do |comment|  %>
+    <div class="comment">
+      <p class="username">
+        <%= comment.user.name %>
+      </p>
+      <p class="comment">
+        <%= comment.content %>
+      </p>
+    </div>
+  <% end %>
+  <%= render "comments/form" %>
+</div>

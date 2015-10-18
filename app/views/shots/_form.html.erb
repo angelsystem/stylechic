@@ -1,0 +1,17 @@
+<%= simple_form_for @shot do |f| %>
+  <div class="file-field input-field">
+    <div class="btn">
+      <span>Image</span>
+      <%= f.input :image, label: false %>
+      <!-- <input type="file"> -->
+    </div>
+    <div class="file-path-wrapper">
+      <input class="file-path validate" type="text">
+    </div>
+  </div>
+  <%= f.input :title %>
+  <%= f.input :link %>
+  <%= f.association :category, prompt: "Choose a Category", input_html: { class: 'browser-default' } %>
+  <%= f.input :description, :input_html => { :rows => 10 } %>
+  <%= f.button :submit %>
+<% end %>

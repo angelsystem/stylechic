@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  root 'shots#index'
+  devise_for :users
+  resources :shots do
+    member do
+      get "like", to: "shots#upvote"
+    end
+    resources :comments
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

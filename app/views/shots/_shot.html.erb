@@ -1,0 +1,33 @@
+<div class="col s4">
+  <div class="card">
+    <%= link_to shot do %>
+      <div class="card-image">
+        <%= image_tag shot.image.url(:small) %>
+        <span class="card-title"><%= shot.title %></span>
+      </div>
+    <% end %>
+    <div class="card-content">
+      <span><strong><%= shot.category.name %></strong></span>
+      <p><%= shot.description %></p>
+    </div>
+    <div class="card-action">
+      <div class="row">
+        <div class="col s6">
+          Shared by
+          <%= shot.user.name %>
+        </div>
+        <div class="col s6 right-align">
+          <span>
+            <i class="fa fa-comments-o"></i>
+            <%= shot.comments.count %>
+          </span>
+          <span>
+            <i class="fa fa-thumbs-o-up"></i>
+            <%= shot.get_likes.size %>
+          </span>
+        </div>
+      </div>
+      <a href="#">This is a link</a>
+    </div>
+  </div>
+</div>
